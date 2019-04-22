@@ -8,8 +8,7 @@ You'll need an org that has a Community setup and active. Ideally you should hav
 Steps to deploy
 ---------------
 <ol>
-<li>Deploy this app to Heroku: 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/paulsPBC/simple-oidc-demo)
+<li>Deploy this app to Heroku: (https://heroku.com/deploy?template=https://github.com/paulsPBC/simple_salesforce_openid)
 <li>Set the environment variables based on your Community. Most will be settings from your connected app, but some can be set to defaults unless specific testing is needed, namely:
 <ul>
 <li>SALESFORCE_GRANT_TYPE: authorization_code
