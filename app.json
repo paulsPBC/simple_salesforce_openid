@@ -1,0 +1,27 @@
+{
+  "name": "Simple Open ID Connect Demo Site",
+  "description": "Demonstrates Salesforce Identity as an OIDC IDP with server side callback processing",
+  "repository": "https://github.com/paulsPBC/simple-oidc-demo",
+  "website": "https://www.salesforce.com/platform/identity",
+  "logo": "https://www.salesforceidentity.info/img/launcher.png",
+  "keywords": [
+    "salesforce",
+    "heroku",
+    "identity",
+    "oidc"
+  ],
+  "env": {
+    "SALESFORCE_COMMUNITY_URL": "COMMUNITY_URL_HERE",
+    "SALESFORCE_AUTHORIZE_URL": "AUTHORIZE_URL_HERE",
+    "SALESFORCE_CLIENT_ID": "CONNECTED_APP_KEY_HERE",
+    "SALESFORCE_CLIENT_SECRET": "CONNECTED_APP_SECRET_HERE",
+    "SALESFORCE_HEROKUAPP_URL": "HEROKUAPP_URL_HERE",
+    "SALESFORCE_CALLBACK_URL": "CALLBACK_URL_HERE",
+    "SALESFORCE_SCOPE": "SALESFORCE_SCOPE_HERE",
+    "SALESFORCE_STATE": "STATE_HERE",
+    "SALESFORCE_EXPID": "EXPID_HERE",
+    "SALESFORCE_TOKEN_URL": "TOKEN_URL_HERE",
+    "SALESFORCE_GRANT_TYPE": "GRANT_TYPE_HERE",
+    "SALESFORCE_LOGOUT_URL": "LOGOUT_URL_HERE"
+  }
+}
