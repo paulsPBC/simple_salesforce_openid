@@ -50,7 +50,7 @@ $authURL = getenv('SALESFORCE_AUTHORIZE_URL').$expid."?client_id=".getenv('SALES
     <div class="splash">
         <h1 class="splash-head">Open ID Connect Demo</h1>
         <p class="splash-subhead">
-            Login or register below (follow link for registration at foot of login page).
+            Login below (for direct registration use <a href="https://identitydv-globalexhibitions.cs27.force.com/InformaMarkets/registration?referralid=informa&referralurl=https%3A%2F%2Fssomarketsfive.herokuapp.com" >informa</a> or <a href="https://identitydv-globalexhibitions.cs27.force.com/InformaMarkets/registration?referralid=test&referralurl=https%3A%2F%2Fssomarketsfive.herokuapp.com" >test</a> links)
         </p>
         <p>
             <a href="<?php echo $authURL; ?>" class="pure-button pure-button-primary">Login</a>
