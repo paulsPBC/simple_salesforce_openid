@@ -43,6 +43,25 @@ curl_close($ch);
 // Normally you would now validate the Access Token against the keys provided by the Salesforce community.
 // You could also call any REST endpoint on the Salesforce community using the returned access token.
 
+// Check if default experience ID has been changed, generate URL entry if it has
+// The experience ID needs to be appended to the standard authorize URL as a virtual directory, e.g. https://authorize.url/expid_value
+if (getenv('SALESFORCE_EXPID') == "EXPID_HERE") {
+    $expid = "";
+} else {
+    $expid = "/".getenv('SALESFORCE_EXPID');
+}
+
+/**
+ * Build authorize URL from environment parameters set in the Heroku instance
+ * It is created in the format:
+ *  <Authorize Endpoint>?client_id=<Client ID>&redirect_uri=<callback URL>&response_type=code&scope=<Scopes>&state=<Requested State>
+ **/
+
+$authURL = getenv('SALESFORCE_AUTHORIZE_URL') . $expid . "?client_id=" . getenv('SALESFORCE_CLIENT_ID') . "&redirect_uri=" . getenv('SALESFORCE_CALLBACK_URL') . "&response_type=code&scope=" . getenv('SALESFORCE_SCOPE') . "&state=" . getenv('SALESFORCE_STATE');
+
+// URLencode the authURL to use it as a parameter
+$authURLencoded = urlencode($authURL);
+
 ?>
 
 <!doctype html>
@@ -110,6 +129,26 @@ curl_close($ch);
                         </div>
                     </section>
 
+
+                    <section class="post">
+                        <header class="post-header">
+
+                            <h2 class="post-title">Logout</h2>
+
+                            <p class="post-meta">
+                                To change your password follow the below link:
+                            </p>
+                        </header>
+
+                        <div class="post-description">
+                            <p>
+                                Changing password also revokes all your tokens (to ensure locking out previous users) therefore if you need to then query the user you will need to run login again - the user will not see this as they are logged in.
+                                This call invokes change password then uses the authorise endpoint as the return url to do this in one: <a href="<?php echo getenv('SALESFORCE_CHANGE_PASSWORD') . $authURLencoded ?>">Change Password</a>
+                            </p>
+
+                        </div>
+                    </section>
+
                     <section class="post">
                         <header class="post-header">
 
@@ -122,7 +161,7 @@ curl_close($ch);
 
                         <div class="post-description">
                             <p>
-                                Logout URL (note this is the standard page and so will return to the community login page, not this demo site): <a href="<?php echo getenv('SALESFORCE_LOGOUT_URL') ?>">Logout</a>
+                                Logout URL: <a href="<?php echo getenv('SALESFORCE_LOGOUT_URL') ?>">Logout</a>
                             </p>
 
                         </div>
