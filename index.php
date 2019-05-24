@@ -15,7 +15,8 @@ if (getenv('SALESFORCE_EXPID') == "EXPID_HERE") {
  **/
 
 $authURL = getenv('SALESFORCE_AUTHORIZE_URL').$expid."?client_id=".getenv('SALESFORCE_CLIENT_ID')."&redirect_uri=".getenv('SALESFORCE_CALLBACK_URL')."&response_type=code&scope=".getenv('SALESFORCE_SCOPE')."&state=".getenv('SALESFORCE_STATE');
-
+// URLencode the authURL to use it as a parameter
+$authURLencoded = urlencode($authURL);
 ?>
 
 <!doctype html>
@@ -50,7 +51,7 @@ $authURL = getenv('SALESFORCE_AUTHORIZE_URL').$expid."?client_id=".getenv('SALES
     <div class="splash">
         <h1 class="splash-head">Open ID Connect Demo</h1>
         <p class="splash-subhead">
-            Login below (for direct registration use <a href="https://identitydv-globalexhibitions.cs27.force.com/InformaMarkets/registration?referralid=informa&referralurl=https%3A%2F%2Fssomarketsfive.herokuapp.com" >informa</a> or <a href="https://identitydv-globalexhibitions.cs27.force.com/InformaMarkets/registration?referralid=test&referralurl=https%3A%2F%2Fssomarketsfive.herokuapp.com" >test</a> links)
+            Login below (for direct registration use the <a href="<?php echo getenv('SALESFORCE_REG_URL') . $authURLencoded ?>" >register</a> link)
         </p>
         <p>
             <a href="<?php echo $authURL; ?>" class="pure-button pure-button-primary">Login</a>
